@@ -1,0 +1,66 @@
+
+1:---------------------------------------
+安装unixodbc
+sudo apt-get install unixodbc unixodbc-bin unixodbc-dev
+安装freetds
+sudo apt-get install freetds-bin freetds-common freetds-dev tdsodbc
+
+2---------------------------------------
+修改你的/etc/odbcinst.ini文件，该文件默认为空
+
+[SQLServer]
+Description     = SQLServer
+Driver          = /usr/lib/arm-linux-gnueabihf/odbc/libtdsodbc.so
+Setup           = /usr/lib/arm-linux-gnueabihf/odbc/libtdsS.so
+UsageCount      = 1
+CPTimeout       = 5
+CPReuse         = 5
+FileUsage       = 1
+
+复制上述内容到ini文件中后，配置就算OK了。
+
+网上很多教程各种配置，其实都是抄袭的。
+其实只要qt可以找到.so文件就可以了！
+依据的就是[SQLServer]这个标签，对应的qt中语句  DRIVER=SQLSERVER;
+
+3--------------------------------------------
+我们写一个函数测试下是否可以正常链接
+创建一个类MsssqlDB,然后添加一个公开函数void openDB();
+具体代码就像下边这样：
+
+
+void MssqlDB::openDB()
+{
+    QStringList drivers = QSqlDatabase::drivers();
+    for(int i = 0; i < drivers.size(); i++)
+    {
+        qDebug() << drivers[i];
+    }
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC", "test");
+
+    QString     dsn = QString("DRIVER={SQLSERVER};SERVER=%1;PORT=%2;DATABASE=%3;UID=%4;PWD=%5");
+                dsn = dsn.arg("192.168.5.1").arg(2003).arg("xxx").arg("sa").arg("");
+    qDebug() << dsn;
+    db.setDatabaseName(dsn);
+
+    if (!db.open())
+    {
+        qDebug()<<"connect sql server failed!";
+
+    }
+    else
+    {
+        qDebug()<<"connect sql server successfully!";
+
+        QSqlQuery query(db);
+        query.exec("select * from cfv3clog");
+        while(query.next())
+        {
+            qDebug() << query.value("clywwindow").toString() << query.value("clywsno").toString();
+
+        }
+    }
+}
+
+如过你的数据库可以正常访问，那么你根据你的 数据库配置 修改下，就可以看到结果了！
