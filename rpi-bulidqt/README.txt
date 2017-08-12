@@ -1,6 +1,9 @@
 准备工作 
 开发环境：pc: Ubuntu 16.04 (64 bit)    pi3 : Raspbian Jessie 2017-06-21 (这个不使用lite原因是缺少opengl库)
 
+关于安装opengles2库的安装
+apt-get install libgles2-mesa-dev
+
 //(这些是需要你在pc上进行的)---------------------------------------------------------------------------
 1：安装必要的软件包
     sudo apt-get install build-essential sshpass git python pkg-config re2c gperf bison flex ninja python ruby gcc-multilib g++-multilib
