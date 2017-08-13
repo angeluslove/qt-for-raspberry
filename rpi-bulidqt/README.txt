@@ -50,6 +50,8 @@
     
     // qtmultimedia  需要的库
     sudo apt-get install libasound2-dev libpulse-dev gstreamer1.0-omx libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+    关于安装解码库的安装(如果你想播放视频，还需要安装解码库，这个库非常大,需要下载160M)
+    sudo apt-get install gstreamer1.0-packagekit
 
     //qtwebengine    需要的库
     sudo apt-get install libvpx-dev libsrtp0-dev libsnappy-dev libnss3-dev
