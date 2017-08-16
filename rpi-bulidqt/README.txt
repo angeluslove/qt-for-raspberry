@@ -58,8 +58,11 @@
 
     //piomxtextures  需要的库
     sudo apt-get install libssh-dev libsmbclient-dev libv4l-dev libbz2-dev
-
-    到这里树莓派的任务就结束了，但需要继续开机联网，后边需要同步和反同步
+    
+    //附加语音合成库
+    sudo apt-get install  libspeechd-dev
+    
+    到这里树莓派的任务就结束了，但需要继续开机联网，后边需要同步和反同步
 
 //这里的步骤是附加的，因为去掉了脚本下载部分所以需要我们自己去下载-------------------------------------------
 1： 下载tools编译工具包 这个也可以去git下载，下载zip包还是很快的，就不提供了，大几百M
