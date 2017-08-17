@@ -60,7 +60,7 @@
     sudo apt-get install libssh-dev libsmbclient-dev libv4l-dev libbz2-dev
     
     //附加语音合成库
-    sudo apt-get install  libspeechd-dev
+    sudo apt-get install  libspeechd-dev speech-dispatcher
     
     到这里树莓派的任务就结束了，但需要继续开机联网，后边需要同步和反同步
 
