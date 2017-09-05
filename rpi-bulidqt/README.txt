@@ -43,7 +43,10 @@
     
     //安装支持的软件和库文件
     sudo apt-get update
-    sudo apt-get install rsync libbluetooth-dev alsa-tools
+    sudo apt-get install rsync  
+    //蓝牙音箱连接
+    sudo apt-get install pulseaudio pulseaudio-module-bluetooth libbluetooth-dev alsa-tools
+    pacmd set-default-sink bluez_sink.xx_xx_xx_xx_xx_xx   //输出音频到特定蓝牙地址中
     
     //qtbase         需要的库
     sudo apt-get install libboost1.55-all-dev libudev-dev libinput-dev libts-dev libmtdev-dev libjpeg-dev libfontconfig1-dev libssl-dev libdbus-1-dev libglib2.0-dev libxkbcommon-dev
