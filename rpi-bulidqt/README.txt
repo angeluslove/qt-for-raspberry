@@ -43,7 +43,7 @@
     
     //安装支持的软件和库文件
     sudo apt-get update
-    sudo apt-get install rsync
+    sudo apt-get install rsync libbluetooth-dev alsa-tools
     
     //qtbase         需要的库
     sudo apt-get install libboost1.55-all-dev libudev-dev libinput-dev libts-dev libmtdev-dev libjpeg-dev libfontconfig1-dev libssl-dev libdbus-1-dev libglib2.0-dev libxkbcommon-dev
