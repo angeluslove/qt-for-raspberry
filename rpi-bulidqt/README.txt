@@ -49,7 +49,7 @@
     pacmd set-default-sink bluez_sink.xx_xx_xx_xx_xx_xx   //输出音频到特定蓝牙地址中
     
     //qtbase         需要的库
-    sudo apt-get install libboost1.55-all-dev libudev-dev libinput-dev libts-dev libmtdev-dev libjpeg-dev libfontconfig1-dev libssl-dev libdbus-1-dev libglib2.0-dev libxkbcommon-dev
+    sudo apt-get install libboost1.58-all-dev libudev-dev libinput-dev libts-dev libmtdev-dev libjpeg-dev libfontconfig1-dev libssl-dev libdbus-1-dev libglib2.0-dev libxkbcommon-dev
     
     // qtmultimedia  需要的库
     sudo apt-get install libasound2-dev libpulse-dev gstreamer1.0-omx libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
