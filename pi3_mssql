@@ -8,14 +8,19 @@ sudo apt-get install freetds-bin freetds-common freetds-dev tdsodbc
 2---------------------------------------
 修改你的/etc/odbcinst.ini文件，该文件默认为空
 
-[SQLServer]
-Description     = SQLServer
-Driver          = /usr/lib/arm-linux-gnueabihf/odbc/libtdsodbc.so
-Setup           = /usr/lib/arm-linux-gnueabihf/odbc/libtdsS.so
-UsageCount      = 1
-CPTimeout       = 5
-CPReuse         = 5
-FileUsage       = 1
+[SQL Server]
+
+Description=SQL Server
+Driver=/usr/local/lib/libtdsodbc.so
+Setup=/usr/local/lib/libtdsS.so
+CHARSET         = UTF-8
+Trace           = No
+ConvWToUtf      =  1
+SQLServerUTF    =  1
+Client_CSet     = UTF-8
+Server_CSet     = UTF-8
+ConvToUtf       = 1
+
 
 复制上述内容到ini文件中后，配置就算OK了。
 
