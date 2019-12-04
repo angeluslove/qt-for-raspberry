@@ -46,15 +46,19 @@
     sudo apt-get install rsync  
     //蓝牙音箱连接
     sudo apt-get install pulseaudio pulseaudio-module-bluetooth libbluetooth-dev alsa-tools
-    pacmd set-default-sink bluez_sink.xx_xx_xx_xx_xx_xx   //输出音频到特定蓝牙地址中
+    pacmd set-default-sink bluez_sink.xx_xx_xx_xx_xx_xx   //输出音频到特定蓝牙地址中  	
+
+    bluez libbluetooth-dev
     
     //qtbase         需要的库
     sudo apt-get install libboost1.58-all-dev libudev-dev libinput-dev libts-dev libmtdev-dev libjpeg-dev libfontconfig1-dev libssl-dev libdbus-1-dev libglib2.0-dev libxkbcommon-dev
     
+    sudo apt-get install libgles2-mesa-dev libgbm-dev
+    sudo apt-get install libpq-dev libmariadbclient-dev
+    
     // qtmultimedia  需要的库
-    sudo apt-get install libasound2-dev libpulse-dev gstreamer1.0-omx libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
-    关于安装解码库的安装(如果你想播放视频，还需要安装解码库，这个库非常大,需要下载160M)
-    sudo apt-get install gstreamer1.0-packagekit
+    sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad libgstreamer-plugins-bad1.0-dev gstreamer1.0-pulseaudio gstreamer1.0-tools gstreamer1.0-alsa libasound2-dev pulseaudio libpulse-dev
+
 
     //qtwebengine    需要的库
     sudo apt-get install libvpx-dev libsrtp0-dev libsnappy-dev libnss3-dev
