@@ -72,3 +72,9 @@ sudo gpasswd -a pi render
 sudo apt-get install ttf-wqy-zenhei
 
 现在开始在ubuntu下编译qt程序，然后把编译后的文件复制到pi4上，加上权限，然后执行吧，祝顺利。
+
+最后多说一句，硬件加速需要你明确打开树莓派的驱动模式，这个在linux-rasp-pi3-vc4-g++中有明确说明，不懂的就看看原文
+At the time of writing Raspbian has to be switched explicitly to the
+experimental VC4 driver. To do this, run raspi-config and enable it
+in Advanced Options -> GL Driver.
+意思就是说运行 sudo raspi-config 在里边打开gl驱动，如果你的树莓派没问题，就不用这么操作了
