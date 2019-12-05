@@ -68,8 +68,4 @@ sudo ldconfig
 //加入pi到渲染分组中
 sudo gpasswd -a pi render
 
-//结语，我是在win10的ubuntu子系统下进行的编译，你也可以使用独立主机进行
-//树莓派使用的是pi4 2G 内存版本，其他版本应该差不多，但编译的是带硬件加速的，因为我需要加速显示流畅的界面
-
-
-C:\Users\Administrator\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState\rootfs\home\lmq\raspi
+现在开始在ubuntu下编译qt程序，然后把编译后的文件复制到pi4上，加上权限，然后执行吧，祝顺利。
