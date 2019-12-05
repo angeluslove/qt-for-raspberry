@@ -17,7 +17,7 @@ sudo apt-get install build-essential sshpass git python pkg-config re2c gperf bi
 mkdir ~/raspi
 //4-------------------------------------下载qt源文件并解压 下载过程就不说了
 tar xvf  qt-everywhere-src-5.12.2.tar.xz
-cd  qt-everywhere-src-5.12.2
+
 //5-------------------------------------下载编译工具
  下载官方的交叉编译工具tools
 https://pan.baidu.com/s/19QtlFMjT4D893jCty8nHxg
@@ -29,29 +29,34 @@ https://pan.baidu.com/s/19QtlFMjT4D893jCty8nHxg
 sudo nano /etc/apt/sources.list
 deb http://mirrors.aliyun.com/raspbian/raspbian/ buster main contrib non-free rpi
 deb-src http://mirrors.aliyun.com/raspbian/raspbian/ buster main contrib non-free rpi
-
-//-------------------------------------安装必要包pi
-sudo apt-get install libboost1.58-all-dev libudev-dev libinput-dev libts-dev libmtdev-dev libjpeg-dev libfontconfig1-dev libssl-dev libdbus-1-dev libglib2.0-dev libxkbcommon-dev
 sudo apt-get update
+//-------------------------------------安装必要包pi
+在pi操作
+//基础包qtbase用
+sudo apt-get install libboost1.58-all-dev libudev-dev libinput-dev libts-dev libmtdev-dev libjpeg-dev libfontconfig1-dev libssl-dev libdbus-1-dev libglib2.0-dev libxkbcommon-dev
+//mesa gbm驱动
 sudo apt-get install libgles2-mesa-dev libgbm-dev
+//蓝牙相关 可以不用安装
 sudo apt-get install bluez libbluetooth-dev
-//--------------------------------------同步
 
+//--------------------------------------同步  
+在ubutun raspi目录下操作（192.168.5.116替换成你的树莓派ip地址）
+mkdir sysroot sysroot/usr sysroot/opt
 rsync -avz pi@192.168.5.116:/lib sysroot
 rsync -avz pi@192.168.5.116:/usr/include sysroot/usr
 rsync -avz pi@192.168.5.116:/usr/lib sysroot/usr
 rsync -avz pi@192.168.5.116:/opt/vc sysroot/opt
 
 //---------------------------------------下载脚本
+在ubuntu raspi目录下操作
 wget https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-relativelinks.py
 chmod +x sysroot-relativelinks.py
 ./sysroot-relativelinks.py sysroot
 
 //---------------------------------------编译
+在ubuntu 操作
+cd  qt-everywhere-src-5.12.2
 ./configure -release -opengl es2 -device linux-rasp-pi3-vc4-g++ -device-option CROSS_COMPILE=~/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-  -sysroot ~/raspi/sysroot -opensource -confirm-license -skip qtwayland -skip qtwebengine -skip qtgamepad -skip qt3d -skip qtlocation -skip qtscript -make libs -prefix /usr/local/qt5.12.6 -extprefix ~/raspi/qt5.12.6 -hostprefix ~/raspi/qt5.12.6-host -no-use-gold-linker -v 
-
-//可选参数
--no-gbm   
 
 //---------------------------------------部署到树莓派
 //在树莓派上建立文件夹并修改权限（pi上执行）
