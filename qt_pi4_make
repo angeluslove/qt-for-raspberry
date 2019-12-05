@@ -68,4 +68,7 @@ sudo ldconfig
 //加入pi到渲染分组中
 sudo gpasswd -a pi render
 
+//中文字体
+sudo apt-get install ttf-wqy-zenhei
+
 现在开始在ubuntu下编译qt程序，然后把编译后的文件复制到pi4上，加上权限，然后执行吧，祝顺利。
