@@ -16,7 +16,7 @@ sudo apt-get install build-essential sshpass git python pkg-config re2c gperf bi
 //3-------------------------------------创建 raspi文件夹
 mkdir ~/raspi
 //4-------------------------------------下载qt源文件并解压 下载过程就不说了
-tar xvf  qt-everywhere-src-5.12.2.tar.xz
+tar xvf  qt-everywhere-src-5.12.6.tar.xz
 
 //5-------------------------------------下载编译工具
  下载官方的交叉编译工具tools
@@ -55,8 +55,15 @@ chmod +x sysroot-relativelinks.py
 
 //---------------------------------------编译
 在ubuntu 操作
-cd  qt-everywhere-src-5.12.2
+cd  qt-everywhere-src-5.12.6
 ./configure -release -opengl es2 -device linux-rasp-pi3-vc4-g++ -device-option CROSS_COMPILE=~/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-  -sysroot ~/raspi/sysroot -opensource -confirm-license -skip qtwayland -skip qtwebengine -skip qtgamepad -skip qt3d -skip qtlocation -skip qtscript -make libs -prefix /usr/local/qt5.12.6 -extprefix ~/raspi/qt5.12.6 -hostprefix ~/raspi/qt5.12.6-host -no-use-gold-linker -v 
+
+关于mysql的插件编译问题，测试发现怎么也不能在编译中生成，只能在编译后单独去编译才行,如果你不需要mysql，可以略过
+进入cd qt-everywhere-src-5.12.6/qtbase/src/plugins/sqldrivers/mysql 目录中，然后执行下方的语句
+//编译mysql 注意替换成你自己的路径
+/home/lmq/raspi/qt5.12.6-host/bin/qmake "INCLUDEPATH+=/home/lmq/raspi/sysroot/usr/include/mariadb" "LIBS+=-L/home/lmq/raspi/sysroot/usr/lib/arm-linux-gnueabihf -lmariadbclient"
+make 
+make install
 
 //---------------------------------------部署到树莓派
 //在树莓派上建立文件夹并修改权限（pi上执行）
@@ -83,3 +90,6 @@ At the time of writing Raspbian has to be switched explicitly to the
 experimental VC4 driver. To do this, run raspi-config and enable it
 in Advanced Options -> GL Driver.
 意思就是说运行 sudo raspi-config 在里边打开gl驱动，如果你的树莓派没问题，就不用这么操作了
+
+
+
