@@ -57,12 +57,14 @@ chmod +x sysroot-relativelinks.py
 在ubuntu 操作
 cd  qt-everywhere-src-5.12.6
 ./configure -release -opengl es2 -device linux-rasp-pi3-vc4-g++ -device-option CROSS_COMPILE=~/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-  -sysroot ~/raspi/sysroot -opensource -confirm-license -skip qtwayland -skip qtwebengine -skip qtgamepad -skip qt3d -skip qtlocation -skip qtscript -make libs -prefix /usr/local/qt5.12.6 -extprefix ~/raspi/qt5.12.6 -hostprefix ~/raspi/qt5.12.6-host -no-use-gold-linker -v 
+make -j4
+make install
 
 关于mysql的插件编译问题，测试发现怎么也不能在编译中生成，只能在编译后单独去编译才行,如果你不需要mysql，可以略过
 进入cd qt-everywhere-src-5.12.6/qtbase/src/plugins/sqldrivers/mysql 目录中，然后执行下方的语句
 //编译mysql 注意替换成你自己的路径
 /home/lmq/raspi/qt5.12.6-host/bin/qmake "INCLUDEPATH+=/home/lmq/raspi/sysroot/usr/include/mariadb" "LIBS+=-L/home/lmq/raspi/sysroot/usr/lib/arm-linux-gnueabihf -lmariadbclient"
-make 
+make -j4
 make install
 
 //---------------------------------------部署到树莓派
