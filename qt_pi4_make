@@ -61,16 +61,15 @@ make -j4
 make install
 
 关于mysql的插件编译问题，测试发现怎么也不能在编译中生成，只能在编译后单独去编译才行,如果你不需要mysql，可以略过
-进入cd qt-everywhere-src-5.12.6/qtbase/src/plugins/sqldrivers/mysql 目录中，然后执行下方的语句
-//编译mysql 注意替换成你自己的路径
-/home/lmq/raspi/qt5.12.6-host/bin/qmake "INCLUDEPATH+=/home/lmq/raspi/sysroot/usr/include/mariadb" "LIBS+=-L/home/lmq/raspi/sysroot/usr/lib/arm-linux-gnueabihf -lmariadbclient"
+进入cd qt-everywhere-src-5.12.6/qtbase/src/plugins/sqldrivers/目录中
+然后用我编辑好的other/qtsqldrivers-config.pri 替换当前目录的qtsqldrivers-config.pri
 make -j4
 make install
 
 //---------------------------------------部署到树莓派
 //在树莓派上建立文件夹并修改权限（pi上执行）
-sudo mkdir  /usr/local/Qt5.12.6
-sudo chown -R pi:pi /usr/local/Qt5.12.6
+sudo mkdir  /usr/local/qt5.12.6
+sudo chown -R pi:pi /usr/local/qt5.12.6
 
 //同步到树莓派上(ubuntu上执行)
 rsync -avz qt5.12.6 pi@192.168.5.116:/usr/local

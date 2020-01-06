@@ -1,0 +1,14 @@
+QT.sqldrivers.enabled_features = 
+QT.sqldrivers.disabled_features = 
+QT.sqldrivers.QT_CONFIG = 
+QT.sqldrivers.exports = 
+QT.sqldrivers_private.enabled_features = sql-odbc sql-psql sql-sqlite sql-tds sql-mysql
+QT.sqldrivers_private.disabled_features = sql-db2 sql-ibase sql-oci sql-sqlite2 system-sqlite
+QT.sqldrivers_private.libraries = odbc psql tds mysql
+QMAKE_LIBS_ODBC = /home/lmq/raspi/sysroot/usr/lib/arm-linux-gnueabihf/libodbc.so
+QMAKE_LIBS_PSQL = /home/lmq/raspi/sysroot/usr/lib/arm-linux-gnueabihf/libpq.so
+QMAKE_INCDIR_PSQL = /home/lmq/raspi/sysroot/usr/include/postgresql
+QMAKE_LIBS_TDS = /home/lmq/raspi/sysroot/usr/lib/arm-linux-gnueabihf/libsybdb.so
+QMAKE_INCDIR_MYSQL = /home/lmq/raspi/sysroot/usr/include/postgresql
+QMAKE_LIBS_MYSQL = /home/lmq/raspi/sysroot/usr/lib/arm-linux-gnueabihf/libmariadb.so
+QMAKE_INCDIR_MYSQL = /home/lmq/raspi/sysroot/usr/include/mariadb
