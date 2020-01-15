@@ -63,6 +63,7 @@ make install
 关于mysql的插件编译问题，测试发现怎么也不能在编译中生成，只能在编译后单独去编译才行,如果你不需要mysql，可以略过
 进入cd qt-everywhere-src-5.12.6/qtbase/src/plugins/sqldrivers/目录中
 然后用我编辑好的other/qtsqldrivers-config.pri 替换当前目录的qtsqldrivers-config.pri
+注意：修改文件中的路径，这个文件里边的路径是我机器的，需要修改成你自己的机器的
 make -j4
 make install
 
@@ -91,6 +92,8 @@ At the time of writing Raspbian has to be switched explicitly to the
 experimental VC4 driver. To do this, run raspi-config and enable it
 in Advanced Options -> GL Driver.
 意思就是说运行 sudo raspi-config 在里边打开gl驱动，如果你的树莓派没问题，就不用这么操作了
+gl驱动有两项： kms  和 fkms  一般会使用kms，兼容性会好一些，官方7寸屏幕必须使用kms，fkms会直接黑屏
+如果你用的是外接HDMI屏幕可以选择fkms，性能好一些。
 
 
 
