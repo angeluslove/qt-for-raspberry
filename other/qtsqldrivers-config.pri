@@ -9,6 +9,6 @@ QMAKE_LIBS_ODBC = /home/lmq/raspi/sysroot/usr/lib/arm-linux-gnueabihf/libodbc.so
 QMAKE_LIBS_PSQL = /home/lmq/raspi/sysroot/usr/lib/arm-linux-gnueabihf/libpq.so
 QMAKE_INCDIR_PSQL = /home/lmq/raspi/sysroot/usr/include/postgresql
 QMAKE_LIBS_TDS = /home/lmq/raspi/sysroot/usr/lib/arm-linux-gnueabihf/libsybdb.so
-QMAKE_INCDIR_MYSQL = /home/lmq/raspi/sysroot/usr/include/mysql
+QMAKE_INCDIR_TDS = /home/lmq/raspi/sysroot/usr/include/tds
 QMAKE_LIBS_MYSQL = /home/lmq/raspi/sysroot/usr/lib/arm-linux-gnueabihf/libmariadb.so
 QMAKE_INCDIR_MYSQL = /home/lmq/raspi/sysroot/usr/include/mariadb
